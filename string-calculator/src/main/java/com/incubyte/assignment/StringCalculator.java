@@ -5,16 +5,14 @@ public class StringCalculator {
         if (numbers.isEmpty())
             return 0;
 
-        if (numbers.contains(",")) {
-            String[] parts = numbers.split(",");
-            int sum = 0;
-            for (String part : parts) {
-                sum += Integer.parseInt(part);
-            }
-            return sum;
-        }
+        // Replace newline with comma, then split
+        String[] tokens = numbers.replace("\n", ",").split(",");
 
-        return Integer.parseInt(numbers);
+        int sum = 0;
+        for (String token : tokens) {
+            sum += Integer.parseInt(token);
+        }
+        return sum;
     }
 
 }
