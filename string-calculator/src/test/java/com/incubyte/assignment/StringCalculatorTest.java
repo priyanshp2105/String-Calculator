@@ -70,4 +70,11 @@ public class StringCalculatorTest {
         assertEquals(0, calc.add("1001,1002,5000"));
     }
 
+    @Test
+    public void supportCustomDelimiterOfAnyLength() {
+        StringCalculator calc = new StringCalculator();
+        assertEquals(6, calc.add("//[***]\n1***2***3"));
+        assertEquals(10, calc.add("//[abc]\n4abc3abc3"));
+    }
+
 }
