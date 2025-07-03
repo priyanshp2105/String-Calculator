@@ -62,4 +62,12 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void numbersGreaterThan1000ShouldBeIgnored() {
+        StringCalculator calc = new StringCalculator();
+        assertEquals(2, calc.add("2,1001"));
+        assertEquals(1001, calc.add("1000,1"));
+        assertEquals(0, calc.add("1001,1002,5000"));
+    }
+
 }
