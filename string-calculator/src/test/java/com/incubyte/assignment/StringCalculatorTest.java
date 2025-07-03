@@ -2,6 +2,7 @@ package com.incubyte.assignment;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class StringCalculatorTest {
 
@@ -42,6 +43,23 @@ public class StringCalculatorTest {
         StringCalculator calc = new StringCalculator();
         assertEquals(3, calc.add("//;\n1;2"));
         assertEquals(6, calc.add("//*\n1*2*3"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwExceptionForNegativeNumbers() {
+        StringCalculator calc = new StringCalculator();
+        calc.add("1,-2");
+    }
+
+    @Test
+    public void exceptionMessageShouldListAllNegativeNumbers() {
+        StringCalculator calc = new StringCalculator();
+        try {
+            calc.add("1,-2,3,-4");
+            fail("Exception was expected");
+        } catch (IllegalArgumentException e) {
+            assertEquals("negative numbers not allowed: -2,-4", e.getMessage());
+        }
     }
 
 }
