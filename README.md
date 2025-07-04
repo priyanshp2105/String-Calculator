@@ -36,6 +36,13 @@ This project implements the String Calculator using TDD (Test-Driven Development
 - Input: "//[***][%%]\n1***2%%3" → Output: 6
 - Input: "//[!!][@@]\n1!!2@@3" → Output: 6
 
+-->CUSTOM TEST CASES
+          | Case | Input             | Expected | Description                           |
+          | ---- | ----------------- | -------- | ------------------------------------- |
+          | 1    | `//;\n;;;`        | `0`      | Only delimiters, no numbers           |
+          | 2    | `1001,2000,5000`  | `0`      | All numbers > 1000, should be ignored |
+          | 3    | `//[*][%]\n1*2%3` | `6`      | Handles special character delimiters  |
+
 🧾 Project Structure:
 - `StringCalculator.java` – Core logic
 - `StringCalculatorTest.java` – Test cases for each step
