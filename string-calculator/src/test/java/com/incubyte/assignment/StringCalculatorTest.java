@@ -85,4 +85,23 @@ public class StringCalculatorTest {
         assertEquals(10, calc.add("//[!!!][#][@]\n1!!!2#3@4"));
     }
 
+    @Test
+    public void inputWithOnlyDelimitersShouldReturnZero() {
+        StringCalculator calc = new StringCalculator();
+
+        assertEquals(0, calc.add("//;\n;;;"));
+    }
+
+    @Test
+    public void inputWithOnlyLargeNumbersShouldReturnZero() {
+        StringCalculator calc = new StringCalculator();
+
+        assertEquals(0, calc.add("1001,2000,5000"));
+    }
+
+    @Test
+    public void inputWithSpecialCharacterDelimitersShouldWorkCorrectly() {
+        StringCalculator calc = new StringCalculator();
+        assertEquals(6, calc.add("//[*][%]\n1*2%3"));
+    }
 }
